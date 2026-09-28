@@ -1,10 +1,12 @@
 var manager =  new Stockmanager();
 while (true)
-{   Console.WriteLine("Type Add or Show");
+{   Console.WriteLine("Type Add or Show or Profit or Total profit");
     string choice = Console.ReadLine()!;
 
     if(choice == "Add")
+    
     {
+        Console.Clear();
         Console.WriteLine("Enter product ID");
     int productid;
     while (!int.TryParse(Console.ReadLine(), out productid))
@@ -46,8 +48,10 @@ while (true)
     manager.AddProduct(product);
     Console.WriteLine($"{productname} added!\n");
     }
+
     else if(choice == "Show")
     {
+        Console.Clear();
         manager.ShowProducts();
     }
 
@@ -55,8 +59,22 @@ while (true)
     {
         
     }
+
+    else if(choice == "Profit")
+    {
+        Console.Clear();
+        manager.ShowProfits();
+    }
+
+    else if(choice == "Total profit")
+    {
+        Console.Clear();
+        manager.ShowTotalProfits();
+    }
+
     else
     {
+        Console.Clear();
         Console.WriteLine("You must type 'Add' or 'Show");
         continue;
     }

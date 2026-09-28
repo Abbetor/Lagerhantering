@@ -16,7 +16,23 @@ public class Stockmanager
         }
     }
 
+    public void ShowProfits()
+    {
+        foreach (Product p in Items)
+        {
+            Console.WriteLine($"{p.ProductName}: {p.GetSaleProfit()}kr vinst per st");
+        }
+    }
 
+    public void ShowTotalProfits()
+    {
+        int total = 0;
+        foreach (Product p in Items)
+        {
+           total += p.GetSaleProfit() * p.Quantity;
+        }
+        Console.WriteLine($"Total möjlig vinst: {total}kr");
+    }
 }
 
 public class Product
@@ -44,5 +60,16 @@ public class Product
         if( Quantity == 0) return StockStatus.OutofStock;
         if (Quantity <= 2) return StockStatus.LowStock;
         return StockStatus.Instock;
+
+    
+
     }
+
+    public int GetSaleProfit()
+    {
+        return SellingPrice - BuyInPrice;
+
+    }
+    
+
 }
